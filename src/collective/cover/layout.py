@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-# TODO: this module must be removed in 1.4 release
-from collective.cover.grids import BaseGrid  # noqa
-from zope import deprecation
+# TODO: remove this module after release 1.4
+from collective.cover.grids import BaseGrid  # noqa: F401
+
+import warnings
 
 
-deprecation.deprecated('BaseGrid', 'moved to collective.cover.grids')
+warnings.warn('BaseGrid was moved to moved to collective.cover.grids', DeprecationWarning)

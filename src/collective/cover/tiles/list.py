@@ -18,11 +18,11 @@ from plone.uuid.interfaces import IUUID
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.component import queryUtility
-from zope.deprecation.deprecation import deprecate
 from zope.interface import implementer
 from zope.schema import getFieldsInOrder
 
 import logging
+import warnings
 
 
 logger = logging.getLogger(PROJECTNAME)
@@ -220,8 +220,9 @@ class ListTile(PersistentCoverTile):
         old_data['uuids'] = uuids_dict
         data_mgr.set(old_data)
 
-    @deprecate('Use replace_with_uuids method instead.')
     def replace_with_objects(self, uuids):
+        # TODO: remove this method after release 1.4
+        warnings.warn('Use replace_with_uuids instead', DeprecationWarning)
         self.replace_with_uuids(uuids)
 
     def replace_with_uuids(self, uuids):
